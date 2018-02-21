@@ -65,8 +65,8 @@ exterior1 <- highchart() %>%
                          sum(datos[[4]]$EMITIDOS)),
                 name = "Votos emitidos",
                 showInLegend = T)  %>%
-  hc_exporting(enabled = TRUE) %>% 
-  hc_add_theme(hc_theme_smpl()) 
+  hc_add_theme(hc_theme_smpl()) %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 # porcentaje que no fueron a votar
 myhc_add_series_labels_values <- function (hc, labels, values, text, colors = NULL, ...) 
@@ -91,8 +91,8 @@ exterior2 <- highchart() %>%
              pointFormat=paste('<br><b>Proporción sobre los que no votaron: {point.percentage:.1f}%</b><br>No emitieron su voto estando inscritos: {point.text}')) %>%
   hc_title(text="Voto en el exterior: quienes no fueron a votar", 
            margin=20, style=list(color="#144746", useHTML=TRUE))  %>% 
-  hc_exporting(enabled = TRUE) %>% 
-  hc_add_theme(hc_theme_smpl())
+  hc_add_theme(hc_theme_smpl()) %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 
 # caida de añpoyo en el exterior
@@ -106,9 +106,9 @@ exterior3 <- highchart() %>%
                 round(sum(datos[[4]]$SI)/sum(datos[[4]]$VÁLIDOS)*100, 2)),
                 name = "% de apoyo",
                 showInLegend = F)  %>% 
-  hc_exporting(enabled = TRUE) %>% 
   hc_add_theme(hc_theme_smpl()) %>% 
-  hc_colors("green")
+  hc_colors("green") %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 
 # caida por paises
@@ -122,9 +122,9 @@ exterior4 <- highchart() %>%
   hc_add_series(data = datos[[4]]$CAIDA,
                 name = "% de ganancia o pérdida de apoyo",
                 showInLegend = F)  %>% 
-  hc_exporting(enabled = TRUE) %>% 
   hc_add_theme(hc_theme_smpl()) %>% 
-  hc_colors("red") 
+  hc_colors("red") %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 
 # VOTO EN BOLIVIA
@@ -163,7 +163,7 @@ hc1 <- highchart(type = "map") %>%
   hc_add_theme(hc_theme_smpl()) %>% 
   hc_title(text = "Magnitud de la pérdida de apoyo en los 339 municipios") %>% 
   hc_subtitle(text = "Referendo reelección 2016 vs. elección general 2014")  %>% 
-  hc_credits(text = "rafa.lopez.v")
+  hc_credits(enabled = TRUE, text = "rafalopezv")
   
   
 hc <- highchart(type = "map") %>% 
@@ -179,12 +179,39 @@ hc <- highchart(type = "map") %>%
     hc_add_theme(hc_theme_smpl()) %>% 
   hc_title(text = "En 324 de 339 municipios (95%) disminuye el apoyo a Evo Morales") %>% 
     hc_subtitle(text = "Referendo reelección 2016 vs. elección general 2014")  %>% 
-  hc_credits(text = "rafa.lopez.v")
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 # mapa de caida en el alto y compañia
+for(i in c(1,3,5)) {
+  datos[[i]] %<>% filter(MUNICIPIO == "EL ALTO" |
+                           MUNICIPIO == "POTOSÍ" |
+                           MUNICIPIO == "SACABA" |
+                           MUNICIPIO == "COLOMI" |
+                           MUNICIPIO == "VILLA TUNARI")  %>% 
+    select(MUNICIPIO, MAS)
+}
 
+datos[[1]]$AÑO <- 2009
+datos[[3]]$AÑO <- 2014
+datos[[5]]$AÑO <- 2016
 
+b <- rbind(datos[[1]], datos[[3]], datos[[5]])
+b <- b[, c("AÑO", "MUNICIPIO", "MAS")]
+b %<>% spread(., key = MUNICIPIO, value = MAS)
 
+bastiones <- highchart() %>% 
+  hc_xAxis(categories = b$AÑO) %>% 
+  hc_add_series(name = "El Alto", data = b$`EL ALTO`, tooltip = list(valueDecimals = 2, valueSuffix = "%")) %>% 
+  hc_add_series(name = "Potosí", data = b$POTOSÍ, tooltip = list(valueDecimals = 2, valueSuffix = "%")) %>% 
+  hc_add_series(name = "Villa Tunari (Chapare)", data = b$`VILLA TUNARI`, tooltip = list(valueDecimals = 2, valueSuffix = "%")) %>%
+  hc_add_series(name = "Sacaba (Chapare)", data = b$SACABA, tooltip = list(valueDecimals = 2, valueSuffix = "%")) %>%
+  hc_add_series(name = "Colomi (Chapare)", data = b$COLOMI, tooltip = list(valueDecimals = 2, valueSuffix = "%"))  %>% 
+  hc_add_theme(hc_theme_smpl())  %>% 
+  hc_title(text = "Disminución de apoyo al presidente en lugares estratégicos") %>% 
+  hc_subtitle(text = "Elecciones nacionales 2009 y 104 y referendo 2016") %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
+  
+#EXPORTAR
 
 htmlwidgets::saveWidget(exterior1, file="exterior1.html")
 htmlwidgets::saveWidget(exterior2, file="exterior2.html")
@@ -192,3 +219,4 @@ htmlwidgets::saveWidget(exterior3, file="exterior3.html")
 htmlwidgets::saveWidget(exterior4, file="exterior4.html")
 htmlwidgets::saveWidget(hc, file="hc.html")
 htmlwidgets::saveWidget(hc1, file="hc1.html")
+htmlwidgets::saveWidget(bastiones, file="bastiones.html")

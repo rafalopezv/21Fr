@@ -55,7 +55,7 @@ exterior1 <- highchart() %>%
   hc_chart(type = "column") %>% 
   hc_title(text = "Voto en el exterior") %>% 
   hc_subtitle(text = "33 países") %>% 
-  hc_xAxis(categories = c("2014:Elección Nacional",
+  hc_xAxis(categories = c("2014: Elección Nacional",
                           "2016: Referendo para habilitar a Evo Morales como candidato")) %>% 
   hc_add_series(data = c(sum(datos[[2]]$`INSCRITOS HABILITADOS`), 
                          sum(datos[[4]]$`INSCRITOS HABILITADOS`)),
@@ -65,8 +65,8 @@ exterior1 <- highchart() %>%
                          sum(datos[[4]]$EMITIDOS)),
                 name = "Votos emitidos",
                 showInLegend = T)  %>%
-  hc_exporting(enabled = TRUE) %>% 
-  hc_add_theme(hc_theme_smpl()) 
+  hc_add_theme(hc_theme_smpl()) %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 # porcentaje que no fueron a votar
 myhc_add_series_labels_values <- function (hc, labels, values, text, colors = NULL, ...) 
@@ -89,10 +89,10 @@ exterior2 <- highchart() %>%
                                 text=datos[[4]]$NO.VOTARON) %>% 
   hc_tooltip(crosshairs=TRUE, borderWidth=5, sort=TRUE, shared=TRUE, table=TRUE,
              pointFormat=paste('<br><b>Proporción sobre los que no votaron: {point.percentage:.1f}%</b><br>No emitieron su voto estando inscritos: {point.text}')) %>%
-  hc_title(text="Voto en el exterior: quienes no fueron a votar", 
+  hc_title(text="Voto en el exterior: quiénes no fueron a votar", 
            margin=20, style=list(color="#144746", useHTML=TRUE))  %>% 
-  hc_exporting(enabled = TRUE) %>% 
-  hc_add_theme(hc_theme_smpl())
+  hc_add_theme(hc_theme_smpl()) %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 
 # caida de añpoyo en el exterior
@@ -106,9 +106,9 @@ exterior3 <- highchart() %>%
                 round(sum(datos[[4]]$SI)/sum(datos[[4]]$VÁLIDOS)*100, 2)),
                 name = "% de apoyo",
                 showInLegend = F)  %>% 
-  hc_exporting(enabled = TRUE) %>% 
   hc_add_theme(hc_theme_smpl()) %>% 
-  hc_colors("green")
+  hc_colors("green") %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 
 # caida por paises
@@ -116,15 +116,15 @@ datos[[4]] %<>% arrange(CAIDA)
 
 exterior4 <- highchart() %>% 
   hc_chart(type = "column") %>% 
-  hc_title(text = "Perdida de apoyo en el referendo de 2016 respecto a la elección de 2014 (%)") %>% 
+  hc_title(text = "Pérdida de apoyo en el referendo de 2016 respecto a la elección de 2014 (%)") %>% 
   hc_subtitle(text = "Pérdida en 31 países, estancamiento en 1, mejora en 1") %>% 
   hc_xAxis(categories = datos[[4]]$PAÍS) %>% 
   hc_add_series(data = datos[[4]]$CAIDA,
                 name = "% de ganancia o pérdida de apoyo",
                 showInLegend = F)  %>% 
-  hc_exporting(enabled = TRUE) %>% 
   hc_add_theme(hc_theme_smpl()) %>% 
-  hc_colors("red") 
+  hc_colors("red") %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 
 # VOTO EN BOLIVIA
@@ -159,11 +159,11 @@ hc1 <- highchart(type = "map") %>%
                 tooltip = list(valueDecimals = 2, valueSuffix = "%")) %>% 
   hc_colorAxis(dataClasses = color_classes(c(seq(-42, 0, by = 10), 0, 13))) %>%
   hc_legend(layout = "vertical", reversed = TRUE,
-            floating = TRUE, align = "right", verticalAlign = "top") %>% 
+            floating = TRUE, align = "right", verticalAlign = "bottom") %>% 
   hc_add_theme(hc_theme_smpl()) %>% 
   hc_title(text = "Magnitud de la pérdida de apoyo en los 339 municipios") %>% 
   hc_subtitle(text = "Referendo reelección 2016 vs. elección general 2014")  %>% 
-  hc_credits(text = "rafa.lopez.v")
+  hc_credits(enabled = TRUE, text = "rafalopezv")
   
   
 hc <- highchart(type = "map") %>% 
@@ -179,7 +179,7 @@ hc <- highchart(type = "map") %>%
     hc_add_theme(hc_theme_smpl()) %>% 
   hc_title(text = "En 324 de 339 municipios (95%) disminuye el apoyo a Evo Morales") %>% 
     hc_subtitle(text = "Referendo reelección 2016 vs. elección general 2014")  %>% 
-  hc_credits(text = "rafa.lopez.v")
+  hc_credits(enabled = TRUE, text = "rafalopezv")
 
 # mapa de caida en el alto y compañia
 for(i in c(1,3,5)) {
@@ -208,14 +208,10 @@ bastiones <- highchart() %>%
   hc_add_series(name = "Colomi (Chapare)", data = b$COLOMI, tooltip = list(valueDecimals = 2, valueSuffix = "%"))  %>% 
   hc_add_theme(hc_theme_smpl())  %>% 
   hc_title(text = "Disminución de apoyo al presidente en lugares estratégicos") %>% 
-  hc_subtitle(text = "Elecciones nacionales 2009 y 104 y referendo 2016") 
+  hc_subtitle(text = "Elecciones nacionales 2009 y 104 y referendo 2016") %>% 
+  hc_credits(enabled = TRUE, text = "rafalopezv")
   
-
-
-                  
-                  
-
-
+#EXPORTAR
 
 htmlwidgets::saveWidget(exterior1, file="exterior1.html")
 htmlwidgets::saveWidget(exterior2, file="exterior2.html")
