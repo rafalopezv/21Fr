@@ -1,0 +1,53 @@
+---
+title: "21F en 7 gráficos"
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE, eval=FALSE}
+# 21 F año 2018
+Sys.setlocale(locale = "es_ES.UTF-8")
+
+```
+
+1
+=====================================  
+
+### Chart 1
+
+<iframe frameBorder="0" src="exterior1.html" width="100%" height="100%" allowtransparency="true"></iframe>
+ 
+2
+=====================================  
+
+### Chart 1
+
+<iframe frameBorder="0" src="exterior2.html" width="100%" height="100%" allowtransparency="true"></iframe>
+
+3
+=====================================  
+
+## dsdsds
+
+<iframe frameBorder="0" src="exterior3.html" width="100%" height="100%" allowtransparency="true"></iframe>
+
+## Chart 1
+
+<iframe frameBorder="0" src="exterior4.html" width="100%" height="100%" allowtransparency="true"></iframe>
+
+4
+=====================================  
+
+## dsdsds
+
+<iframe frameBorder="0" src="hc.html" width="100%" height="100%" allowtransparency="true"></iframe>
+
+## Chart 1
+
+<iframe frameBorder="0" src="hc1.html" width="100%" height="100%" allowtransparency="true"></iframe>
+
+5
+=====================================  
+
+<iframe frameBorder="0" src="bastiones.html" width="100%" height="100%" allowtransparency="true"></iframe>
+
+

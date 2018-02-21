@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519203490239.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D529B6DD",
+    "lastKnownWriteTime" : 1519199387,
+    "last_content_update" : 1519199387,
+    "path" : "~/Dropbox/R/highcharter/mapa.bolivia.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "73,70",
+        "scrollLine" : "64"
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

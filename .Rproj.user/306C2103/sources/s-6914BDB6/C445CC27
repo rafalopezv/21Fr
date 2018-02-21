@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519206496093.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "437191956",
+    "id" : "C445CC27",
+    "lastKnownWriteTime" : 1519209180,
+    "last_content_update" : 1519209180102,
+    "path" : "~/Dropbox/R/21Fr/Untitled.Rmd",
+    "project_path" : "Untitled.Rmd",
+    "properties" : {
+        "cursorPosition" : "1,16",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

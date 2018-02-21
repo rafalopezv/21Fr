@@ -1,0 +1,24 @@
+data(GNI2014)
+
+tm <- treemap(GNI2014, index = c("continent", "iso3"),
+              vSize = "population", vColor = "GNI",
+              type = "value", palette = viridis(3))
+
+hctreemap(tm)
+
+?treemap
+
+tm <- treemap(dtf = datos[[4]], index = "PAÍS",
+              vSize = "CAIDA.EMITIDOS.CIFRA",
+              type = "value", palette = viridis(3))
+
+
+args(treemap)
+
+install.packages("treemap")
+library(treemap)
+library(viridisLite)
+
+
+a <- data(citytemp)
+View(city)

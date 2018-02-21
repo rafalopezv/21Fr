@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519202874644.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1A854099",
+    "lastKnownWriteTime" : 1519207022,
+    "last_content_update" : 1519209081397,
+    "path" : "~/Dropbox/R/21Fr/21Fr.R",
+    "project_path" : "21Fr.R",
+    "properties" : {
+        "cursorPosition" : "226,0",
+        "scrollLine" : "208"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
