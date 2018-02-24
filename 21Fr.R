@@ -55,7 +55,7 @@ exterior1 <- highchart() %>%
   hc_chart(type = "column") %>% 
   hc_title(text = "Voto en el exterior") %>% 
   hc_subtitle(text = "33 países") %>% 
-  hc_xAxis(categories = c("2014:Elección Nacional",
+  hc_xAxis(categories = c("2014: Elección Nacional",
                           "2016: Referendo para habilitar a Evo Morales como candidato")) %>% 
   hc_add_series(data = c(sum(datos[[2]]$`INSCRITOS HABILITADOS`), 
                          sum(datos[[4]]$`INSCRITOS HABILITADOS`)),
@@ -89,7 +89,7 @@ exterior2 <- highchart() %>%
                                 text=datos[[4]]$NO.VOTARON) %>% 
   hc_tooltip(crosshairs=TRUE, borderWidth=5, sort=TRUE, shared=TRUE, table=TRUE,
              pointFormat=paste('<br><b>Proporción sobre los que no votaron: {point.percentage:.1f}%</b><br>No emitieron su voto estando inscritos: {point.text}')) %>%
-  hc_title(text="Voto en el exterior: quienes no fueron a votar", 
+  hc_title(text="Voto en el exterior: quiénes no fueron a votar", 
            margin=20, style=list(color="#144746", useHTML=TRUE))  %>% 
   hc_add_theme(hc_theme_smpl()) %>% 
   hc_credits(enabled = TRUE, text = "rafalopezv")
@@ -116,7 +116,7 @@ datos[[4]] %<>% arrange(CAIDA)
 
 exterior4 <- highchart() %>% 
   hc_chart(type = "column") %>% 
-  hc_title(text = "Perdida de apoyo en el referendo de 2016 respecto a la elección de 2014 (%)") %>% 
+  hc_title(text = "Pérdida de apoyo en el referendo de 2016 respecto a la elección de 2014 (%)") %>% 
   hc_subtitle(text = "Pérdida en 31 países, estancamiento en 1, mejora en 1") %>% 
   hc_xAxis(categories = datos[[4]]$PAÍS) %>% 
   hc_add_series(data = datos[[4]]$CAIDA,
@@ -159,7 +159,7 @@ hc1 <- highchart(type = "map") %>%
                 tooltip = list(valueDecimals = 2, valueSuffix = "%")) %>% 
   hc_colorAxis(dataClasses = color_classes(c(seq(-42, 0, by = 10), 0, 13))) %>%
   hc_legend(layout = "vertical", reversed = TRUE,
-            floating = TRUE, align = "right", verticalAlign = "top") %>% 
+            floating = TRUE, align = "right", verticalAlign = "bottom") %>% 
   hc_add_theme(hc_theme_smpl()) %>% 
   hc_title(text = "Magnitud de la pérdida de apoyo en los 339 municipios") %>% 
   hc_subtitle(text = "Referendo reelección 2016 vs. elección general 2014")  %>% 

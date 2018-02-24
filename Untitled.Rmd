@@ -6,8 +6,12 @@ output: flexdashboard::flex_dashboard
 ```{r setup, include=FALSE, eval=FALSE}
 # 21 F año 2018
 Sys.setlocale(locale = "es_ES.UTF-8")
-
 ```
+
+0
+=====================================  
+
+<center><img src="/Users/rafalopezv/Desktop/ffff.jpg"/></center>
 
 1
 =====================================  
