@@ -13,6 +13,7 @@ Sys.setlocale(locale = "es_ES.UTF-8")
 0
 =====================================  
 <center><img src="21f.jpg"/>
+
 <small>Ilustración de [Frank Arbelo](https://www.facebook.com/frankarbelostudio/photos/a.1895369970707412.1073741830.1894171534160589/2060684617509279/?type=3&theater)</small></center>
 
 1
